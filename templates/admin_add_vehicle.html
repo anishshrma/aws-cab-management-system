@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Vehicle - Admin | Drive Ezzy{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h1>Add New Vehicle</h1>
+        <a href="{{ url_for('admin_dashboard') }}" class="btn btn-secondary">
+            Back to Dashboard
+        </a>
+    </div>
+
+    <div class="form-container">
+        <form method="POST" enctype="multipart/form-data">
+
+            <!-- Vehicle Name -->
+            <div class="form-group">
+                <label for="vehicle_name" class="form-label">Vehicle Name / Model</label>
+                <input type="text" name="vehicle_name" id="vehicle_name"
+                    class="form-control"
+                    placeholder="e.g. Toyota Fortuner"
+                    required>
+            </div>
+
+            <!-- Vehicle Type -->
+            <div class="form-group">
+                <label for="vehicle_type" class="form-label">Vehicle Type</label>
+                <select name="vehicle_type" id="vehicle_type" class="form-control" required>
+                    <option value="">Select Type</option>
+                    <option value="sedan">Sedan</option>
+                    <option value="suv">SUV</option>
+                    <option value="mini">Mini</option>
+                </select>
+            </div>
+
+            <!-- Description -->
+            <div class="form-group">
+                <label for="description" class="form-label">Vehicle Description</label>
+                <textarea name="description" id="description"
+                        class="form-control" rows="3"
+                        placeholder="Comfort, luggage space, terrain suitability"
+                        required></textarea>
+            </div>
+
+            <!-- Price -->
+            <div class="form-group">
+                <label for="price_per_day" class="form-label">Price Per Day (₹)</label>
+                <input type="number" name="price_per_day" id="price_per_day"
+                    class="form-control"
+                    placeholder="e.g. 4000"
+                    required>
+            </div>
+
+            <!-- Vehicle Image -->
+            <div class="form-group">
+                <label for="image" class="form-label">Vehicle Image</label>
+                <input type="file" name="image" id="image"
+                    class="form-control" accept="image/*">
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="btn btn-primary w-100">
+                Add Vehicle
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}

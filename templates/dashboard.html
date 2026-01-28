@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - Drive Ezzy{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h1>My Dashboard</h1>
+        <div>
+            <a href="{{ url_for('vehicles_list') }}" class="btn btn-primary">
+                Browse Vehicles
+            </a>
+            <a href="{{ url_for('logout') }}" class="btn btn-danger">
+                Logout
+            </a>
+        </div>
+    </div>
+
+    <p class="mb-4">Welcome, {{ username }}!</p>
+
+    <h3>My Bookings</h3>
+
+    <div class="grid mt-2">
+        {% for booking in my_bookings %}
+        <div class="card">
+
+            <div style="margin-bottom: 10px;">
+                <span class="badge badge-success">Booked</span>
+            </div>
+
+            {% if booking.vehicle_image %}
+            <img src="{{ url_for('static', filename='uploads/' + booking.vehicle_image) }}"
+                alt="Vehicle Image"
+                class="card-img">
+            {% endif %}
+
+            <div class="card-body">
+                <h4 class="card-title">{{ booking.vehicle_name }}</h4>
+                <p class="text-muted">
+                    Type: {{ booking.vehicle_type | upper }}
+                </p>
+                <p>
+                    Rental Period:
+                    <strong>{{ booking.start_date }}</strong>
+                    to
+                    <strong>{{ booking.end_date }}</strong>
+                </p>
+                <p>
+                    Total Cost: ₹{{ booking.total_cost }}
+                </p>
+            </div>
+
+            <div class="card-footer">
+                <a href="{{ url_for('extend_booking', booking_id=booking.booking_id) }}"
+                class="btn btn-sm btn-outline-info w-100 mb-2">
+                    Extend Booking
+                </a>
+
+                <a href="{{ url_for('cancel_booking', booking_id=booking.booking_id) }}"
+                class="btn btn-sm btn-danger w-100">
+                    Cancel Booking
+                </a>
+            </div>
+        </div>
+
+        {% else %}
+        <div class="alert alert-warning w-100">
+            You have not booked any vehicles yet.
+            <a href="{{ url_for('vehicles_list') }}">Browse Vehicles</a>
+            to get started.
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

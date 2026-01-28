@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}About - Drive Ezzy{% endblock %}
+
+{% block content %}
+<div class="container" style="max-width: 900px; margin: 0 auto;">
+    <div class="card p-4">
+        <h1 class="text-center mb-4" style="color: var(--primary-color);">
+            About Drive Ezzy
+        </h1>
+
+        <p class="lead text-center mb-4" style="font-size: 1.2rem; color: var(--secondary-color);">
+            Welcome to <strong>Drive Ezzy</strong>, an AWS-Powered Cab Management System designed to
+            simplify vehicle rentals and deliver a seamless ride-booking experience using modern
+            cloud technologies.
+        </p>
+
+        <hr style="border: 0; border-top: 1px solid #eee; margin: 2rem 0;">
+
+        <h3>Our Mission</h3>
+        <p class="mb-4">
+            Our mission is to provide a scalable, secure, and user-friendly cab rental platform that
+            enables customers to easily browse vehicles, manage bookings, and modify reservations,
+            while allowing administrators to efficiently manage fleet operations using AWS services.
+        </p>
+
+        <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 2rem;">
+            <div>
+                <h3>Technology Stack</h3>
+                <ul style="padding-left: 1.2rem;">
+                    <li class="mb-2">
+                        <strong>Frontend:</strong> HTML, CSS, and JavaScript for responsive and
+                        intuitive user interfaces.
+                    </li>
+                    <li class="mb-2">
+                        <strong>Backend:</strong> Python Flask for handling authentication, bookings,
+                        and business logic.
+                    </li>
+                    <li class="mb-2">
+                        <strong>Cloud Platform:</strong> Amazon Web Services (AWS) for scalable and
+                        reliable infrastructure.
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h3>Why AWS for Drive Ezzy?</h3>
+                <p>
+                    AWS provides the reliability, scalability, and security required for a modern
+                    cab management system. Drive Ezzy leverages:
+                </p>
+                <ul style="padding-left: 1.2rem;">
+                    <li class="mb-2">
+                        <strong>Amazon EC2:</strong> To host the Flask application with high
+                        availability.
+                    </li>
+                    <li class="mb-2">
+                        <strong>Amazon DynamoDB:</strong> For fast, secure, and scalable NoSQL data
+                        storage of users, vehicles, and bookings.
+                    </li>
+                    <li class="mb-2">
+                        <strong>Amazon SNS:</strong> To send real-time booking and activity
+                        notifications.
+                    </li>
+                    <li class="mb-2">
+                        <strong>AWS IAM:</strong> For secure access control and role-based permissions.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}Available Vehicles - Drive Ezzy{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h1>Available Vehicles</h1>
+        <a href="{{ url_for('home') }}" class="btn btn-secondary">
+            Back to My Dashboard
+        </a>
+    </div>
+
+    <div class="grid">
+        {% for vehicle in vehicles %}
+        <div class="card">
+
+            {% if vehicle.image %}
+            <img src="{{ url_for('static', filename='uploads/' + vehicle.image) }}"
+                alt="{{ vehicle.name }}"
+                class="card-img">
+            {% endif %}
+
+            <h3 class="card-title">{{ vehicle.name }}</h3>
+
+            <div class="card-body">
+                <h6 class="text-muted mb-2">Vehicle Type</h6>
+                <p class="mb-2" style="font-size: 0.9rem;">
+                    {{ vehicle.type | upper }}
+                </p>
+
+                <h6 class="text-muted mb-2">Description</h6>
+                <p class="mb-4" style="font-size: 0.9rem;">
+                    {{ vehicle.description | truncate(100) }}
+                </p>
+
+                <h6 class="text-muted mb-2">Price</h6>
+                <p style="font-size: 0.9rem;">
+                    ₹{{ vehicle.price }} per day
+                </p>
+            </div>
+
+            <div class="card-footer">
+                {% if vehicle.id in user_bookings %}
+                    <button class="btn btn-success w-100" disabled>
+                        Booked
+                    </button>
+                {% else %}
+                    <a href="{{ url_for('book_vehicle', vehicle_id=vehicle.id) }}"
+                    class="btn btn-primary w-100">
+                        Book Now
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+
+        {% else %}
+        <div class="alert alert-info w-100">
+            No vehicles available at the moment.
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

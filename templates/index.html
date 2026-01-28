@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}Welcome - Drive Ezzy{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="hero">
+        <h1>Drive Ezzy</h1>
+        <p>
+            An AWS-Powered Cab Management System for seamless vehicle booking,
+            rental management, and real-time cloud-driven operations.
+        </p>
+
+        {% if not session.get('username') and not session.get('admin') %}
+        <div class="mt-4">
+            <a href="{{ url_for('login') }}" class="btn btn-primary">
+                User Login
+            </a>
+            <a href="{{ url_for('signup') }}" class="btn btn-secondary" style="margin-left: 1rem;">
+                User Signup
+            </a>
+        </div>
+        {% endif %}
+    </div>
+
+    <section class="features">
+        <div class="feature-card">
+            <h3>About Drive Ezzy</h3>
+            <p>
+                Drive Ezzy is a modern cloud-based cab rental platform that allows
+                users to browse vehicles, book rides, extend rentals, and manage
+                reservations through an intuitive web interface.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <h3>AWS Cloud Services</h3>
+            <p>
+                The system is built using core AWS services to ensure scalability
+                and reliability:
+            </p>
+            <ul>
+                <li><strong>Amazon EC2:</strong> Hosting the Flask web application.</li>
+                <li><strong>Amazon DynamoDB:</strong> Storing users, vehicles, and bookings.</li>
+                <li><strong>Amazon SNS:</strong> Sending real-time booking notifications.</li>
+                <li><strong>AWS IAM:</strong> Managing secure access and permissions.</li>
+            </ul>
+        </div>
+
+        <div class="feature-card">
+            <h3>Seamless Ride Experience</h3>
+            <p>
+                Users can easily filter vehicles (Sedan, SUV, Mini), modify
+                booking durations, cancel or upgrade rides, and track all
+                reservations from their personal dashboard.
+            </p>
+        </div>
+    </section>
+</div>
+{% endblock %}
